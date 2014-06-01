@@ -3,6 +3,7 @@
 
 #include "insertion.hpp"
 #include "quick.hpp"
+#include "merge.hpp"
 
 void reset ( std::vector<int>& data )
 {
@@ -15,6 +16,13 @@ void reset ( std::vector<int>& data )
     data.push_back ( 23 );
     data.push_back ( 4 );
     data.push_back ( 31 );
+    data.push_back ( 12 );
+    data.push_back ( 91 );
+    data.push_back ( 76 );
+    data.push_back ( 14 );
+    data.push_back ( 51 );
+    data.push_back ( 6 );
+    data.push_back ( 2 );
 }
 
 void print ( const std::vector<int>& data )
@@ -46,6 +54,12 @@ int main()
 
     ret = atod::quick::sort ( data );
     std::cout << "Quicksort results after " << ret << " partitions:" << std::endl;
+
+    print ( data );
+    reset ( data );
+
+    ret = atod::merge::sort ( data );
+    std::cout << "Merge sort results after " << ret << " merges: " << std::endl;
 
     print ( data );
     reset ( data );
