@@ -38,6 +38,7 @@ int main()
     t.add ( 118 );
     t.add ( 119 );
     t.add ( 120 );
+    t.add ( 120 );
 
     std::cout << "Tree contains 41? " << ( t.contains ( 41 ) ? "true" : "false" ) << std::endl;
     std::cout << "Tree contains 3? " << ( t.contains ( 3 ) ? "true" : "false" ) << std::endl;
