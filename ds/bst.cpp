@@ -1,5 +1,6 @@
 
 #include <cassert>
+#include <deque>
 
 #include "bst.hpp"
 
@@ -73,6 +74,60 @@ void bst::internalPrint ( const node* n, int depth, std::ostream& dest )
 
     internalPrint ( n->left_, depth+1, dest );
     internalPrint ( n->right_, depth+1, dest );
+}
+
+void bst::bft ( std::ostream& dest ) const
+{
+    std::deque<node*> toTraverse;
+
+    node* curr = root_;
+
+    while ( curr != nullptr )
+    {
+        if ( curr->left_ != nullptr )
+            toTraverse.push_back ( curr->left_ );
+
+        if ( curr->right_ != nullptr )
+            toTraverse.push_back ( curr->right_ );
+
+        if ( curr != root_ )
+            dest << " ";
+
+        dest << curr->value_;
+
+        if ( toTraverse.size() > 0 )
+        {
+            curr = toTraverse.front();
+            toTraverse.pop_front();
+        }
+        else
+        {
+            curr = nullptr;
+        }
+    }
+
+    dest << std::endl;
+}
+
+void bst::dft ( std::ostream& dest, bool pre ) const
+{
+    internalDft ( root_, dest, pre );
+    dest << std::endl;
+}
+
+void bst::internalDft ( const node* n, std::ostream& dest, bool pre )
+{
+    if ( n == nullptr )
+        return;
+
+    if ( pre )
+        dest << n->value_ << " ";
+
+    internalDft ( n->left_, dest, pre );
+    internalDft ( n->right_, dest, pre );
+
+    if ( !pre )
+        dest << n->value_ << " ";
 }
 
 bst::node::node ( int value ) : value_ ( value ), left_ ( nullptr ), right_ ( nullptr )

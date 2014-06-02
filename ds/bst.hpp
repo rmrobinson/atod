@@ -17,6 +17,10 @@ public:
 
     void print ( std::ostream& dest ) const;
 
+    void bft ( std::ostream& dest ) const;
+
+    void dft ( std::ostream& dest, bool pre ) const;
+
 private:
     class node
     {
@@ -30,6 +34,8 @@ private:
     };
 
     static void internalPrint ( const node* n, int depth, std::ostream& dest );
+
+    static void internalDft ( const node* n, std::ostream& dest, bool pre );
 
     node* root_;
 };

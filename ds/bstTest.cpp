@@ -24,6 +24,15 @@ int main()
 
     t.print ( std::cout );
 
+    std::cout << "Breadth first traversal" << std::endl;
+    t.bft ( std::cout );
+
+    std::cout << "Pre-Order Depth first traversal" << std::endl;
+    t.dft ( std::cout, true );
+
+    std::cout << "Post-Order Depth first traversal" << std::endl;
+    t.dft ( std::cout, false );
+
     return 0;
 }
 
