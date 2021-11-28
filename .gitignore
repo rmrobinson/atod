@@ -32,3 +32,6 @@ build/
 # IDEs
 *.kdev4
 *.xcodeproj/
+
+# Apple
+.DS_Store
